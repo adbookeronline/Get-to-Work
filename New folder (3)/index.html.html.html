@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta name="theme-color" content="#f5c400" />
+  <title>GET TO WORK!</title>
+  <meta name="description" content="Beat Houston traffic and punch in before the clock hits zero." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="gameShell">
+    <header class="hud">
+      <div class="brand"><span>GET TO</span><strong>WORK!</strong></div>
+      <div class="meter timerBox"><small>TIME LEFT</small><b id="timer">15:00</b></div>
+      <div class="meter progressBox"><small id="routeLabel">SELECT A ROUTE</small><div class="track"><i id="progressFill"></i><em id="playerDot">●</em></div><b id="distance">6.8 MI</b></div>
+      <div class="meter statBox"><small id="statLabel">RUSH METER</small><div class="bars" id="staminaBars"><i></i><i></i><i></i><i></i><i></i></div></div>
+      <button class="musicToggle" id="musicToggle" aria-label="Toggle music">♫ MUSIC ON</button>
+    </header>
+
+    <section class="stage">
+      <canvas id="game" aria-label="Get To Work game area"></canvas>
+      <div class="skylineTag">HOUSTON, TX <span>•</span> 8:45 AM</div>
+      <div id="toast" aria-live="polite"></div>
+      <div class="mission" id="mission">CHOOSE HOW YOU'LL GET THERE</div>
+
+      <section class="overlay start" id="startScreen">
+        <div class="alarm"><span>MISSED<br>ALARM</span><b>8:45</b></div>
+        <div class="posterGuy" aria-label="Man wearing a baseball cap and backpack">
+          <img src="runner-hero.png" alt="Runner wearing a black baseball cap and backpack" /><span>LET'S MOVE!</span>
+        </div>
+        <div class="heroCopy"><p>WORK IS 17 MINUTES AWAY.</p><h1><span>YOU HAVE</span> 15 MINUTES.</h1><p class="danger">PUNCH IN ON TIME — OR YOU'RE FIRED.</p></div>
+        <div class="choices">
+          <button data-mode="run"><span class="icon">🏃🏾</span><b>RUN</b><small>Shortcuts • Stamina</small><em>HARD</em></button>
+          <button data-mode="drive"><span class="icon">🚙</span><b>DRIVE</b><small>Fast • Heavy traffic</small><em>RISKY</em></button>
+          <button data-mode="bike"><span class="icon">🚴🏾</span><b>BIKE</b><small>Cut-throughs • Obstacles</small><em>QUICK</em></button>
+        </div>
+        <div class="how"><kbd>↑</kbd><kbd>↓</kbd> SWITCH LANES &nbsp; <kbd>SPACE</kbd> DODGE / BOOST &nbsp; • &nbsp; TAP CONTROLS ALSO WORK</div>
+      </section>
+
+      <section class="overlay end hidden" id="endScreen">
+        <div class="stamp" id="endStamp">PUNCHED IN</div>
+        <h2 id="endTitle">YOU MADE IT!</h2>
+        <p id="endText">Clocked in with time to spare.</p>
+        <div class="results"><span><small>ROUTE</small><b id="resultRoute">BIKE</b></span><span><small>TIME LEFT</small><b id="resultTime">01:22</b></span><span><small>BEST</small><b id="bestTime">—</b></span></div>
+        <button id="replay">RUN IT BACK ↻</button>
+      </section>
+    </section>
+
+    <footer class="controls">
+      <div class="laneControls"><button id="up" aria-label="Move up">▲</button><button id="down" aria-label="Move down">▼</button></div>
+      <div class="tip" id="tip">Every shortcut has a price.</div>
+      <button class="action" id="action">BOOST <span>SPACE</span></button>
+      <button class="punch hidden" id="punch">PUNCH IN!</button>
+    </footer>
+  </main>
+  <audio id="bgMusic" src="the-chase.mp3" loop preload="auto"></audio>
+  <script src="game.js"></script>
+</body>
+</html>
